@@ -175,6 +175,39 @@
   }
   .player-name-line strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .player-meta { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+  .rank-chart-card { margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--border); }
+  .rank-chart-title { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted); margin: 0 0 4px; }
+  .rank-chart-subtitle { font-size: 0.82rem; color: var(--muted); margin: 0 0 12px; }
+  .rank-chart { display: flex; align-items: flex-start; font-size: 0.76rem; position: relative; }
+  .rank-chart .rc-labels { flex: 0 0 122px; position: relative; }
+  .rank-chart .rc-labels.rc-left .rc-label { text-align: right; padding-right: 8px; }
+  .rank-chart .rc-labels.rc-right .rc-label { text-align: left; padding-left: 8px; }
+  .rank-chart .rc-label {
+    position: absolute; left: 0; right: 0;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    color: var(--muted); transition: color 0.15s, font-weight 0.15s, opacity 0.15s;
+    cursor: pointer;
+  }
+  .rank-chart .rc-plot-wrap { flex: 0 0 auto; padding: 0 8px; }
+  .rank-chart svg { display: block; overflow: visible; }
+  .rank-chart .rc-gridline { stroke: var(--border); stroke-width: 1; }
+  .rank-chart .rc-line { fill: none; stroke: var(--same); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.15s, opacity 0.15s, stroke-width 0.15s; }
+  .rank-chart .rc-hit { fill: none; stroke: transparent; stroke-width: 16; cursor: pointer; }
+  .rank-chart .rc-dot { fill: var(--same); stroke: var(--panel); stroke-width: 2; transition: fill 0.15s, opacity 0.15s; cursor: pointer; }
+  .rank-chart .rc-weeklabel { fill: var(--muted); font-size: 10px; }
+  .rank-chart.has-active .rc-label:not(.is-active) { opacity: 0.35; }
+  .rank-chart.has-active .rc-line:not(.is-active) { opacity: 0.18; }
+  .rank-chart.has-active .rc-dot:not(.is-active) { opacity: 0.18; }
+  .rank-chart .rc-label.is-active { color: var(--accent); font-weight: 700; opacity: 1; }
+  .rank-chart .rc-line.is-active { stroke: var(--accent); stroke-width: 2.5; opacity: 1; }
+  .rank-chart .rc-dot.is-active { fill: var(--accent); opacity: 1; }
+  .rank-chart .rc-tooltip {
+    position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 8px; font-size: 0.72rem; box-shadow: 0 4px 12px -4px rgba(0,0,0,0.3);
+    transform: translate(-50%, -125%); white-space: nowrap; opacity: 0; transition: opacity 0.1s; z-index: 5;
+    color: var(--text);
+  }
+  .rank-chart .rc-tooltip.show { opacity: 1; }
   .past-weeks summary { cursor: pointer; font-weight: 600; padding: 4px 0; }
   .past-weeks-list { margin-top: 10px; padding-left: 0; list-style: none; }
   .past-weeks-list li { padding: 8px 0; border-bottom: 1px solid var(--border); color: var(--muted); font-size: 0.9rem; }
@@ -215,6 +248,81 @@
     </table>
     </div>
     <p style="margin-top:12px; font-size:0.9rem; line-height:1.55;">First week, so no movement arrows yet. <strong>East Coast Express</strong> takes #1 on the back of the week's highest score plus the league's best rest-of-season outlook (4.4K, clearly ahead of the pack). Right behind them, <strong>Shanghai Assassins</strong> posted the week's most lopsided win (99.5-point margin) to sit at #2. Down at #7, <strong>Kim Jong Un</strong> is the highest-ranked team that actually lost this week — their 0.16-point defeat was about as unlucky as a loss gets, and their roster production (312.4, second-best in the league) says this record undersells them early.</p>
+<div class="rank-chart-card">
+  <p class="rank-chart-title">Power Ranking — Season Start</p>
+  <p class="rank-chart-subtitle">One week in the books — this fills in and starts tracking movement from next week on.</p>
+  <div class="rank-chart" data-chart="power-rank-history">
+    
+    <div class="rc-plot-wrap">
+      <svg viewBox="0 0 120.0 398" width="120.0" height="398" style="min-width:120.0px;">
+        <line class="rc-gridline" x1="0" y1="21.0" x2="120.0" y2="21.0"/>
+<line class="rc-gridline" x1="0" y1="51.0" x2="120.0" y2="51.0"/>
+<line class="rc-gridline" x1="0" y1="81.0" x2="120.0" y2="81.0"/>
+<line class="rc-gridline" x1="0" y1="111.0" x2="120.0" y2="111.0"/>
+<line class="rc-gridline" x1="0" y1="141.0" x2="120.0" y2="141.0"/>
+<line class="rc-gridline" x1="0" y1="171.0" x2="120.0" y2="171.0"/>
+<line class="rc-gridline" x1="0" y1="201.0" x2="120.0" y2="201.0"/>
+<line class="rc-gridline" x1="0" y1="231.0" x2="120.0" y2="231.0"/>
+<line class="rc-gridline" x1="0" y1="261.0" x2="120.0" y2="261.0"/>
+<line class="rc-gridline" x1="0" y1="291.0" x2="120.0" y2="291.0"/>
+<line class="rc-gridline" x1="0" y1="321.0" x2="120.0" y2="321.0"/>
+<line class="rc-gridline" x1="0" y1="351.0" x2="120.0" y2="351.0"/>
+<text class="rc-weeklabel" x="60.0" y="389" text-anchor="middle">Wk 1</text>
+<path class="rc-hit" data-team-key="east-coast-express" d="M60.0,21.0"/>
+<path class="rc-line" data-team-key="east-coast-express" d="M60.0,21.0"/>
+<circle class="rc-dot" data-team-key="east-coast-express" data-team="East Coast Express" data-rank="1" data-week="1" cx="60.0" cy="21.0" r="4.5"/>
+<path class="rc-hit" data-team-key="shanghai-assassins" d="M60.0,51.0"/>
+<path class="rc-line" data-team-key="shanghai-assassins" d="M60.0,51.0"/>
+<circle class="rc-dot" data-team-key="shanghai-assassins" data-team="Shanghai Assassins" data-rank="2" data-week="1" cx="60.0" cy="51.0" r="4.5"/>
+<path class="rc-hit" data-team-key="better-call-hall" d="M60.0,81.0"/>
+<path class="rc-line" data-team-key="better-call-hall" d="M60.0,81.0"/>
+<circle class="rc-dot" data-team-key="better-call-hall" data-team="Better Call Hall" data-rank="3" data-week="1" cx="60.0" cy="81.0" r="4.5"/>
+<path class="rc-hit" data-team-key="lead-them-to-paradise" d="M60.0,111.0"/>
+<path class="rc-line" data-team-key="lead-them-to-paradise" d="M60.0,111.0"/>
+<circle class="rc-dot" data-team-key="lead-them-to-paradise" data-team="Lead Them To Paradise" data-rank="4" data-week="1" cx="60.0" cy="111.0" r="4.5"/>
+<path class="rc-hit" data-team-key="love-is-in-the-air" d="M60.0,141.0"/>
+<path class="rc-line" data-team-key="love-is-in-the-air" d="M60.0,141.0"/>
+<circle class="rc-dot" data-team-key="love-is-in-the-air" data-team="Love is in the Air" data-rank="5" data-week="1" cx="60.0" cy="141.0" r="4.5"/>
+<path class="rc-hit" data-team-key="new-york-titans" d="M60.0,171.0"/>
+<path class="rc-line" data-team-key="new-york-titans" d="M60.0,171.0"/>
+<circle class="rc-dot" data-team-key="new-york-titans" data-team="New York Titans" data-rank="6" data-week="1" cx="60.0" cy="171.0" r="4.5"/>
+<path class="rc-hit" data-team-key="kim-jong-un" d="M60.0,201.0"/>
+<path class="rc-line" data-team-key="kim-jong-un" d="M60.0,201.0"/>
+<circle class="rc-dot" data-team-key="kim-jong-un" data-team="Kim Jong Un" data-rank="7" data-week="1" cx="60.0" cy="201.0" r="4.5"/>
+<path class="rc-hit" data-team-key="new-york-nets" d="M60.0,231.0"/>
+<path class="rc-line" data-team-key="new-york-nets" d="M60.0,231.0"/>
+<circle class="rc-dot" data-team-key="new-york-nets" data-team="New York Nets" data-rank="8" data-week="1" cx="60.0" cy="231.0" r="4.5"/>
+<path class="rc-hit" data-team-key="titsburgh-feelers" d="M60.0,261.0"/>
+<path class="rc-line" data-team-key="titsburgh-feelers" d="M60.0,261.0"/>
+<circle class="rc-dot" data-team-key="titsburgh-feelers" data-team="Titsburgh Feelers" data-rank="9" data-week="1" cx="60.0" cy="261.0" r="4.5"/>
+<path class="rc-hit" data-team-key="don-dynasty" d="M60.0,291.0"/>
+<path class="rc-line" data-team-key="don-dynasty" d="M60.0,291.0"/>
+<circle class="rc-dot" data-team-key="don-dynasty" data-team="Don Dynasty" data-rank="10" data-week="1" cx="60.0" cy="291.0" r="4.5"/>
+<path class="rc-hit" data-team-key="big-dick-drew" d="M60.0,321.0"/>
+<path class="rc-line" data-team-key="big-dick-drew" d="M60.0,321.0"/>
+<circle class="rc-dot" data-team-key="big-dick-drew" data-team="Big Dick Drew" data-rank="11" data-week="1" cx="60.0" cy="321.0" r="4.5"/>
+<path class="rc-hit" data-team-key="popcorn-carnells" d="M60.0,351.0"/>
+<path class="rc-line" data-team-key="popcorn-carnells" d="M60.0,351.0"/>
+<circle class="rc-dot" data-team-key="popcorn-carnells" data-team="Popcorn Carnells" data-rank="12" data-week="1" cx="60.0" cy="351.0" r="4.5"/>
+      </svg>
+    </div>
+    <div class="rc-labels rc-right" style="height:372px;">
+      <div class="rc-label" data-team-key="east-coast-express" tabindex="0" style="top:6px;height:30px;line-height:30px;" title="East Coast Express">East Coast Express</div>
+<div class="rc-label" data-team-key="shanghai-assassins" tabindex="0" style="top:36px;height:30px;line-height:30px;" title="Shanghai Assassins">Shanghai Assassins</div>
+<div class="rc-label" data-team-key="better-call-hall" tabindex="0" style="top:66px;height:30px;line-height:30px;" title="Better Call Hall">Better Call Hall</div>
+<div class="rc-label" data-team-key="lead-them-to-paradise" tabindex="0" style="top:96px;height:30px;line-height:30px;" title="Lead Them To Paradise">Lead Them To Paradise</div>
+<div class="rc-label" data-team-key="love-is-in-the-air" tabindex="0" style="top:126px;height:30px;line-height:30px;" title="Love is in the Air">Love is in the Air</div>
+<div class="rc-label" data-team-key="new-york-titans" tabindex="0" style="top:156px;height:30px;line-height:30px;" title="New York Titans">New York Titans</div>
+<div class="rc-label" data-team-key="kim-jong-un" tabindex="0" style="top:186px;height:30px;line-height:30px;" title="Kim Jong Un">Kim Jong Un</div>
+<div class="rc-label" data-team-key="new-york-nets" tabindex="0" style="top:216px;height:30px;line-height:30px;" title="New York Nets">New York Nets</div>
+<div class="rc-label" data-team-key="titsburgh-feelers" tabindex="0" style="top:246px;height:30px;line-height:30px;" title="Titsburgh Feelers">Titsburgh Feelers</div>
+<div class="rc-label" data-team-key="don-dynasty" tabindex="0" style="top:276px;height:30px;line-height:30px;" title="Don Dynasty">Don Dynasty</div>
+<div class="rc-label" data-team-key="big-dick-drew" tabindex="0" style="top:306px;height:30px;line-height:30px;" title="Big Dick Drew">Big Dick Drew</div>
+<div class="rc-label" data-team-key="popcorn-carnells" tabindex="0" style="top:336px;height:30px;line-height:30px;" title="Popcorn Carnells">Popcorn Carnells</div>
+    </div>
+    <div class="rc-tooltip"></div>
+  </div>
+</div>
   </section>
 
   <section class="sec-blue">
@@ -310,5 +418,62 @@
 
   <footer>Dynasty Dons League</footer>
 </div>
+<script>
+(function () {
+  document.querySelectorAll('.rank-chart[data-chart]').forEach(function (chart) {
+    function setActive(key) {
+      chart.classList.toggle('has-active', !!key);
+      chart.querySelectorAll('[data-team-key]').forEach(function (el) {
+        el.classList.toggle('is-active', !!key && el.getAttribute('data-team-key') === key);
+      });
+    }
+    chart.querySelectorAll('[data-team-key]').forEach(function (el) {
+      el.addEventListener('pointerenter', function () {
+        if (!chart.classList.contains('rc-pinned')) setActive(el.getAttribute('data-team-key'));
+      });
+      el.addEventListener('pointerleave', function () {
+        if (!chart.classList.contains('rc-pinned')) setActive(null);
+      });
+      el.addEventListener('focus', function () { setActive(el.getAttribute('data-team-key')); });
+      el.addEventListener('blur', function () { if (!chart.classList.contains('rc-pinned')) setActive(null); });
+      el.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var key = el.getAttribute('data-team-key');
+        var isPinnedToThis = chart.classList.contains('rc-pinned') && el.classList.contains('is-active');
+        if (isPinnedToThis) {
+          chart.classList.remove('rc-pinned');
+          setActive(null);
+        } else {
+          chart.classList.add('rc-pinned');
+          setActive(key);
+        }
+      });
+    });
+    document.addEventListener('click', function () {
+      if (chart.classList.contains('rc-pinned')) {
+        chart.classList.remove('rc-pinned');
+        setActive(null);
+      }
+    });
+    var tooltip = chart.querySelector('.rc-tooltip');
+    if (tooltip) {
+      chart.querySelectorAll('.rc-dot').forEach(function (dot) {
+        dot.addEventListener('pointerenter', function () {
+          var team = dot.getAttribute('data-team');
+          var rank = dot.getAttribute('data-rank');
+          var week = dot.getAttribute('data-week');
+          tooltip.textContent = team + ' — #' + rank + ' (Week ' + week + ')';
+          var r = dot.getBoundingClientRect();
+          var cr = chart.getBoundingClientRect();
+          tooltip.style.left = (r.left - cr.left + r.width / 2) + 'px';
+          tooltip.style.top = (r.top - cr.top) + 'px';
+          tooltip.classList.add('show');
+        });
+        dot.addEventListener('pointerleave', function () { tooltip.classList.remove('show'); });
+      });
+    }
+  });
+})();
+</script>
 </body>
 </html>
