@@ -142,9 +142,11 @@
   .move-same { color: var(--same); }
   .recap p { margin: 0 0 12px; }
   .recap p:last-child { margin-bottom: 0; }
-  .matchup { padding: 12px 0; border-bottom: 1px solid var(--border); }
+  .matchup { display: flex; gap: 10px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--border); }
   .matchup:last-child { border-bottom: none; }
+  .matchup-body { flex: 1; min-width: 0; }
   .matchup .score { color: var(--muted); font-size: 0.85rem; }
+  .matchup-topscorer { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
   .matchup .note { font-size: 0.9rem; margin-top: 5px; line-height: 1.55; }
   .placeholder { color: var(--muted); font-style: italic; }
   .player-card {
